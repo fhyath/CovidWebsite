@@ -86,6 +86,9 @@ html, body {
     .item span {
     color: red;
     }
+    .qspan{
+        color:red;
+    }
     input[type="date"]::-webkit-inner-spin-button {
     display: none;
     }
@@ -114,7 +117,7 @@ html, body {
     margin: 5px 20px 15px 0;
     cursor: pointer;
     }
-    .question span {
+    .ans {
     margin-left: 30px;
     }
     .question-answer label {
