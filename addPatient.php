@@ -3,11 +3,11 @@
   <head>
     <title>Vaccine Records</title>
     <link rel="stylesheet" href="style.css">
-      
   </head>
   <body>
+
     <div class="testbox">
-      <form action="/">
+      <form action="data.php" method = "post">
         <div class="banner">
           <h1>New Patient</h1>
         </div>
@@ -15,14 +15,14 @@
         <fieldset>
           <legend>Patient Information</legend>
           <div class="item">
-            <label for="patFirst"> First Name<span>*</span></label>
-            <input id="fnpatFirstame" type="text" name="patFirst" required/>
+            <label for="pat_first"> First Name<span>*</span></label>
+            <input id="pat_first" type="text" name="pat_first" required/>
           </div>
           <div class="item">
-            <label for="patLast"> Last Name<span>*</span></label>
-            <input id="patLast" type="text" name="patLast" required/>
+            <label for="pat_last"> Last Name<span>*</span></label>
+            <input id="pat_last" type="text" name="pat_last" required/>
           </div>
-          <div>
+          <div class="item">
             <label for="age">Age<span>*</span></label>
             <input id="age" type="text" name="age" required/>
           </div>
@@ -31,11 +31,11 @@
             <label>Gender</label>
             <div class="question-answer">
               <div>
-                <input type="radio" value="none" id="radio_1" name="gender"/>
+                <input type="radio" value="M" id="radio_1" name="gender" />
                 <label for="radio_1" class="radio"><span>Male</span></label>
               </div>
               <div>
-                <input  type="radio" value="none" id="radio_2" name="gender"/>
+                <input  type="radio" value="F" id="radio_2" name="gender" required/>
                 <label for="radio_2" class="radio"><span>Female</span></label>
               </div>
             </div>
@@ -51,7 +51,7 @@
           </div>
           <div class="item">
             <p>Center</p>
-            <select>
+            <select name = "center" required>
               <option selected value="" disabled selected></option>
               <option value="CVS Pharmacy" >CVS Pharmacy</option>
               <option value="Ontario Clinic">Ontario Clinic</option>
@@ -67,33 +67,32 @@
           </div>
           <div class="item">
             <p>Vaccine Manufacturer</p>
-            <select>
-              <option selected value="" disabled selected></option>
+            <select name = "manu" required>
               <option value="Moderna" >Moderna</option>
-              <option value="Phizer">Phizer</option>
+              <option value="Phizer">Pfizer</option>
               <option value="Johnson & Johnson">Johnson & Johnson</option>
             </select>
           </div>
           <div class="question">
             <label>Administrator</label>
             <div class="item">
-              <label for="docFirst"> First Name<span>*</span></label>
-              <input id="docFirst" type="text" name="docFirst" required/>
+              <label for="doc_first"> First Name<span>*</span></label>
+              <input id="doc_first" type="text" name="doc_first" required/>
             </div>
             <div class="item">
-              <label for="docLast"> Last Name<span>*</span></label>
-              <input id="docLast" type="text" name="docLast" required/>
+              <label for="doc_last"> Last Name<span>*</span></label>
+              <input id="doc_last" type="text" name="doc_last" required/>
             </div>
           </div>
           <div class="question">
             <label>Dosage Number</label>
             <div class="question-answer">
               <div>
-                <input type="radio" value="none" id="radio_3" name="dosage"/>
+                <input type="radio" value="1" id="radio_3" name="dosage" required/>
                 <label for="radio_3" class="radio"><span>1</span></label>
               </div>
               <div>
-                <input  type="radio" value="none" id="radio_4" name="dosage"/>
+                <input  type="radio" value="2" id="radio_4" name="dosage"/>
                 <label for="radio_4" class="radio"><span>2</span></label>
               </div>
             </div>

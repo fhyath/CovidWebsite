@@ -38,7 +38,7 @@ html, body {
     }
     .banner {
     position: relative;
-    height: 300px;
+    heght: 100px;
     background-color: #85c7c7;
     background-image: url("#");  
     background-size: cover;
