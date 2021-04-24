@@ -1,3 +1,7 @@
+<?php
+        include_once 'db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,22 +42,22 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Covid <em>Database</em></h2></a>
+          <a class="navbar-brand" href="index.php"><h2>Covid <em>Database</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="index.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="patient.html">Add Patient</a>
+                <a class="nav-link" href="patient.php">Add Patient</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="searchDB.php">Search Database</a>
+                <a class="nav-link" href="searchDB.php">Search / Update Database</a>
               </li>
             </ul>
           </div>
@@ -75,60 +79,31 @@
     </style>
     <!-- Page Content -->
     <!-- Banner Starts Here -->
+
+    <style>
+      p{
+        font-family:calibri;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      </style>
     <div class="banner">
       <div class="container">
 
         <div class="row">
           <div class="col-md-8 offset-md-2">
-            <div class="header-text caption">
-              <h2>COVID Vaccine Tracking Database</h2>
+            <div class="header-text caption" >
+              <h2 style = "color:white; font-size:50pt;">COVID Vaccine Database</h2>
+              <p style = "color:white; font-size:15pt;">This website is designed to be used by Covid-19 vaccine administrators. When a vaccine is administered to a patient, their info is entered and stored in the database. 
+                                                          The number of vaccinations is also tracked and incremented when a patient is added to the database. Additionally, the database can be queried to find patients and their information. <br><br>
+                                                          <strong >By Sage Phan and Furqaan Hyath<strong></p>
               </div>
             </div>
           </div>
-
-
       </div>
     </div>
-    <!-- Banner Ends Here -->
 
-    <!-- Trusted Starts Here -->
-    <!-- <div class="trusted-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="trusted-section-heading">
-              <h4>TRUSTED BY 1,250+ HAPPY CUSTOMERS WORLDWIDE</h4>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="owl-trusted owl-carousel">
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 1">
-              </div>
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 2">
-              </div>
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 3">
-              </div>
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 4">
-              </div>
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 5">
-              </div>
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 6">
-              </div>
-              <div class="trusted-item">
-                <img src="assets/images/trusted-01.png" alt="trusted 7">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Trusted Ends Here -->
 
 
 

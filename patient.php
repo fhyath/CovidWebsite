@@ -1,3 +1,7 @@
+<?php
+    include_once 'db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,22 +44,22 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>COVID <em>Database</em></h2></a>
+          <a class="navbar-brand" href="index.php"><h2>COVID <em>Database</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="index.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="patient.html">Add a Patient</a>
+                <a class="nav-link" href="patient.html">Add Patient</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="searchDB.php">Search Database</a>
+                <a class="nav-link" href="searchDB.php">Search / Update Database</a>
               </li>
     
             </ul>
@@ -84,7 +88,7 @@
     </div>
 
     <div class="testbox">
-      <form action="index1.php" method ="post">
+      <form action="submit.php" method ="post">
         <div class="banner1">
           <h1 class ="form1">New Patient</h1>
         </div>
@@ -108,11 +112,11 @@
             <label>Gender<span class = "qspan">*</span></label>
             <div class="question-answer">
               <div>
-                <input type="radio" value="none" id="radio_1" name="gender" required/>
+                <input type="radio" value="M" id="radio_1" name="gender" required/>
                 <label for="radio_1" class="radio"><span class ="ans">Male</span></label>
               </div>
               <div>
-                <input  type="radio" value="none" id="radio_2" name="gender"/>
+                <input  type="radio" value="F" id="radio_2" name="gender"/>
                 <label for="radio_2" class="radio"><span class ="ans">Female</span></label>
               </div>
             </div>
@@ -128,27 +132,27 @@
           </div>
           <div class="item">
             <p>Center <span class ="qspan">*</span></p>
-            <select required>
+            <select required name="center">
               <option selected value="" disabled selected></option>
-              <option value="CVS Pharmacy" >CVS Pharmacy</option>
-              <option value="Ontario Clinic">Ontario Clinic</option>
-              <option value="Mexico City Clinic">Mexico City Clinic</option>
-              <option value="Paris Clinic" >Paris Clinic</option>
-              <option value="Great Britain Clinic">Great Britain Clinic</option>
-              <option value="Moscow Clinic">Moscow Clinic</option>
-              <option value="Beijing Clinic" >Beijing Clinic</option>
-              <option value="South Africa Clinic">South Africa Clinic</option>
-              <option value="Rio Clinic">Rio Clinic</option>
-              <option value="Sydney Clinic" >Sydney Clinic</option>
+              <option value="1" >CVS Pharmacy</option>
+              <option value="2">Ontario Clinic</option>
+              <option value="3">Mexico City Clinic</option>
+              <option value="4" >Paris Clinic</option>
+              <option value="5">Great Britain Clinic</option>
+              <option value="6">Moscow Clinic</option>
+              <option value="7" >Beijing Clinic</option>
+              <option value="8">South Africa Clinic</option>
+              <option value="9">Rio Clinic</option>
+              <option value="10" >Sydney Clinic</option>
             </select>
           </div>
           <div class="item">
             <p>Vaccine Manufacturer <span class ="qspan">*</span></p>
-            <select required>
+            <select name="manu"required>
               <option selected value="" disabled selected></option>
-              <option value="Moderna" >Moderna</option>
-              <option value="Phizer">Pfizer</option>
-              <option value="Johnson & Johnson">Johnson & Johnson</option>
+              <option value="2" >Moderna</option>
+              <option value="1">Pfizer</option>
+              <option value="3">Johnson & Johnson</option>
             </select>
           </div>
         </fieldset>
@@ -156,7 +160,7 @@
  
             <fieldset>
             <legend>Administrator</legend>
-            <div class="item">
+            <!-- <div class="item">
               <label for="docFirst"> First Name<span class ="qspan">*</span></label>
               <input id="docFirst" type="text" name="docFirst" required/>
             </div>
@@ -164,23 +168,40 @@
               <label for="docLast"> Last Name<span class ="qspan">*</span></label>
               <input id="docLast" type="text" name="docLast" required/>
             </div>
+ -->
+            <div class="item">
+            <p>Doctor<span class ="qspan">*</span></p>
+            <select name = "doctor" required>
+              <option selected value="" disabled selected></option>
+              <option value="1">Dr. Jim Bob</option>
+              <option value="2">Dr. Con Jon</option>
+              <option value="3">Dr. Wilson Ball</option>
+              <option value="4">Dr. Jean Howe</option>
+              <option value="5">Dr. Sara One</option>
+              <option value="6">Dr. Nathan Drake</option>
+              <option value="7">Dr. Leonard Church</option>
+              <option value="8">Dr. Laverius Tucker</option>
+              <option value="9">Dr. Solanum Nomai</option>
+              <option value="10" >Dr. Rex Bot</option>
+            </select>
+          </div>
 
           <div class="question">
             <label>Dosage Number <span class ="qspan">*</span></label>
             <div class="question-answer">
               <div>
-                <input type="radio" value="none" id="radio_3" name="dosage" required/>
+                <input type="radio" value="1" id="radio_3" name="dosage" required/>
                 <label for="radio_3" class="radio"><span class ="ans">1</span></label>
               </div>
               <div>
-                <input  type="radio" value="none" id="radio_4" name="dosage"/>
+                <input  type="radio" value="2" id="radio_4" name="dosage"/>
                 <label for="radio_4" class="radio"><span class ="ans">2</span></label>
               </div>
             </div>
           </div>
         </fieldset>
         <div class="btn-block">
-          <button type="submit" href="/">Submit</button>
+          <button type="submit" href="submit.php">Submit</button>
         </div>
       </form>
     </div>

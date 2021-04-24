@@ -43,23 +43,23 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Covid <em>Database</em></h2></a>
+          <a class="navbar-brand" href="index.php"><h2>Covid <em>Database</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="index.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="patient.html">Add A Patient</a>
+                <a class="nav-link" href="patient.php">Add Patient</a>
               </li>
   
               <li class="nav-item active">
-                <a class="nav-link" href="searchDB.php">Search Database</a>
+                <a class="nav-link" href="searchDB.php">Search / Update Database</a>
               </li>
             </ul>
           </div>
@@ -102,16 +102,34 @@
 
               if(isset($_POST['search'])){
                 $searchKey = $_POST['search'];
-
-                $sql = "Select patient.patient_id, patient.first_name, patient.last_name, patient.age, patient.gender, patient.dosage_no, patient.start_date, patient.end_date, doctor.alast_name, center.center_name, 
+                $searchKey = trim($searchKey);
+                if(strlen($searchKey)==0){
+                  $sql ="Select patient.patient_id, patient.first_name, patient.last_name, patient.age, patient.gender, patient.dosage_no, patient.start_date, patient.end_date, doctor.alast_name, center.center_name, 
+                  vaccine_manufacturers.vaccine_manufacturer, country.country_name
+                  FROM patient
+                  JOIN doctor on doctor.doctor_id = patient.doctor_id
+                  JOIN center on center.center_id = patient.center_id
+                  JOIN vaccine_manufacturers on vaccine_manufacturers.vaccine_manufacturer_id = patient.vaccine_manufacturer_id
+                  JOIN country on center.country_id = country.country_id
+                  ORDER BY patient.patient_id DESC;
+                  ";
+                }
+                else{
+                $sql = "Select patient.patient_id, patient.first_name, patient.last_name, patient.age, 
+                patient.gender, patient.dosage_no, patient.start_date, patient.end_date, doctor.alast_name, center.center_name, 
                 vaccine_manufacturers.vaccine_manufacturer, country.country_name
                 FROM patient
                 JOIN doctor on doctor.doctor_id = patient.doctor_id
                 JOIN center on center.center_id = patient.center_id
                 JOIN vaccine_manufacturers on vaccine_manufacturers.vaccine_manufacturer_id = patient.vaccine_manufacturer_id
                 JOIN country on center.country_id = country.country_id 
-                WHERE patient.first_name LIKE '$searchKey%'
-                ";
+                WHERE patient.first_name = '$searchKey' OR patient.last_name = '$searchKey'
+                OR patient.age = '$searchKey' OR patient.gender ='$searchKey' OR patient.dosage_no = '$searchKey'
+                OR doctor.alast_name = '$searchKey' OR center.center_name = '$searchKey'
+                OR vaccine_manufacturers.vaccine_manufacturer = '$searchKey'
+                OR country.country_name = '$searchKey'
+                ORDER BY patient.patient_id DESC;";
+                }
                 // $sql = "Select patient_id, first_name, last_name FROM patient WHERE first_name LIKE '$searchKey%'";
               }
               else{
@@ -121,8 +139,8 @@
                 JOIN doctor on doctor.doctor_id = patient.doctor_id
                 JOIN center on center.center_id = patient.center_id
                 JOIN vaccine_manufacturers on vaccine_manufacturers.vaccine_manufacturer_id = patient.vaccine_manufacturer_id
-                JOIN country on center.country_id = country.country_id;
-                ";
+                JOIN country on center.country_id = country.country_id
+                ORDER BY patient.patient_id DESC;";
                  $searchKey = "";
              }
               $result = mysqli_query($conn, $sql);
@@ -155,6 +173,7 @@
             <th>Center Name</th>
             <th>Vaccine Manufacturer</th>
             <th>Country</th>
+            <th>Action</th>
 
 
 					</tr>
@@ -172,6 +191,7 @@
             <td><?php echo $row->center_name?> </td>
             <td><?php echo $row->vaccine_manufacturer?> </td>
             <td><?php echo $row->country_name?> </td>
+            <td><a href="update-process.php?id=<?php echo $row->patient_id?>">Update</a></td>
 					</tr>
           <?php }?>
 				</table>
